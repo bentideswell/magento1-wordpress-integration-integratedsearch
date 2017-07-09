@@ -1,0 +1,17 @@
+/**
+ * FishPig_WordPress
+ * WordPress Integration for Magento eCommerce
+ * by FishPig
+ *
+ * http://fishpig.co.uk/wordpress-integration.html
+ *
+ */
+
+.search-tabs {  }
+.search-tabs ul.tabs { height: 1%; overflow: hidden; background: #eee; padding: 0 10px; }
+.search-tabs ul.tabs li { float: left; padding: 1px; }
+.search-tabs ul.tabs li.active { background: #fff; border: 1px solid #e1e1e1; border-bottom: 0; padding: 0; }
+.search-tabs ul.tabs li a { padding: 8px 20px 6px; text-decoration: none; display: inline-block; font-size: 13px; }
+.search-tabs .tab-content-wrapper { background-image: linear-gradient(to bottom, #FFFFFF, rgba(255, 255, 255, 0) 20%); border-top: 1px solid #e1e1e1; margin-top: -2px; }
+.search-tabs .tab-content {  padding-top: 20px; }
+.search-tabs .tab-content-blog { padding: 20px; }

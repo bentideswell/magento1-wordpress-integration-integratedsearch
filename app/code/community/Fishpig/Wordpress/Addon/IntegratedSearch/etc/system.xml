@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <wordpress>
+            <groups>
+            	<integratedsearch translate="label" module="wordpress">
+            		<label>Integrated Search</label>
+					<sort_order>18</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+            		<fields>
+		            	<css>
+		            		<label>Stylesheet</label>
+							<sort_order>1</sort_order>
+            				<frontend_type>select</frontend_type>
+            				<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+		            	</css>
+		            	<magento>
+		            		<label>Magento Search</label>
+		            		<comment>If Yes, the Magento search field will search products and blog posts</comment>
+							<sort_order>6</sort_order>
+            				<frontend_type>select</frontend_type>
+            				<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+		            	</magento>
+		            	<blog>
+		            		<label>Blog Search Widget</label>
+		            		<comment>If Yes, the blog search wudget will search products and blog posts</comment>
+							<sort_order>7</sort_order>
+            				<frontend_type>select</frontend_type>
+            				<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+		            	</blog>
+		            	<group_post_types>
+		            		<label>Group Post Types Together</label>
+		            		<comment>If Yes, all available post types will be displayed in a single tab</comment>
+							<sort_order>11</sort_order>
+            				<frontend_type>select</frontend_type>
+            				<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+		            	</group_post_types>
+            		</fields>
+            	</integratedsearch>
+            </groups>
+        </wordpress>
+    </sections>
+</config>

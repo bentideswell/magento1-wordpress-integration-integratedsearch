@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout>
+<!--
+/**
+ * @category    	Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     	http://fishpig.co.uk/license.txt
+ * @author      	Ben Tideswell <help@fishpig.co.uk>
+ * /
+-->
+	<!--
+		/**
+		 * This layout is applied dynamically to the catalogsearch_result_index handle
+		 * via an observer if integration is enabled
+		 */
+	-->
+	<catalogsearch_result_index_with_wordpress>
+		<reference name="head">
+			<action method="addJs"><script>fishpig/wordpress/integrated-search.js</script></action>
+			<action method="addCss" ifconfig="wordpress/misc/include_css"><css>wordpress/styles.css</css></action>
+			<action method="addCss" ifconfig="wordpress/integratedsearch/css"><css>wordpress-addons/integrated-search.css</css></action>
+		</reference>
+		<reference name="search.result">
+			<action method="unsetChild"><child>search_result_list</child></action>
+		</reference>
+		<reference name="content">
+			<action method="unsetChild"><child>search.result</child></action>		
+		</reference>
+		<reference name="content">
+			<block type="wordpress/search_result" name="catalogsearch.integrated" template="wordpress-addons/integrated-search/result.phtml">
+				<action method="setSearchVar"><var>q</var></action>
+				<action method="setExcerptSize"><size>30</size></action>
+				<action method="append"><block>search_result_list</block></action>
+				<block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml" />
+			</block>
+		</reference>
+	</catalogsearch_result_index_with_wordpress>
+</layout>

@@ -1,0 +1,23 @@
+##
+# WordPress Integration - Integrated Search
+# Integrate your Magento product search with your WordPress blog search
+#
+# Author:			    	 FishPig Limited (Ben Tideswell)
+# URL:	 					 http://fishpig.co.uk/magento/wordpress-integration/integrated-search/
+##
+
+25/02/2015 - v1.3.0.0
+- Added support for custom post types
+
+23/04/2014 - v1.2.3.1
+- Added module name and URL into config.xml
+
+18/09/2013 - v1.2.3.0
+- Removed catalog results when no products returned
+
+03/08/2013 - v1.2.2.0
+- Improved CSS and JS class switch over
+
+03/08/2013 - v1.2.0.0
+- Added configuration options to integrate into Magento search field or WordPress search field or both
+- Added configuration option for CSS file
