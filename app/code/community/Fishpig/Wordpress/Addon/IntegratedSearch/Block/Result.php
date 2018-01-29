@@ -14,11 +14,25 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 	protected function _prepareLayout()
 	{
 		if (Mage::getStoreConfigFlag('wordpress/integratedsearch/group_post_types')) {
-			Mage::app()->getRequest()->setParam('post_type', '*');
+			$postTypes = Mage::helper('wordpress/app')->getPostTypes();
+
+			foreach($postTypes as $type => $postType) {
+				if ((int)$postType->getExcludeFromSearch() === 1) {
+					unset($postTypes[$type]);
+				}
+				else if ((int)$postType->getPublic() !== 1) {
+					unset($postTypes[$type]);
+				}
+			}
+			
+			if (count($postTypes) > 0) {
+				Mage::app()->getRequest()->setParam('post_type', implode(',', array_keys($postTypes)));
+			}
 		}
 		
 		return parent::_prepareLayout();
 	}
+
 	/**
 	 * Retrieve the tab data
 	 *
