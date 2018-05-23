@@ -13,7 +13,8 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 	**/
 	protected function _prepareLayout()
 	{
-		if (Mage::getStoreConfigFlag('wordpress/integratedsearch/group_post_types')) {
+		/*
+		if ($this->isGroupPostTypes()) {
 			$postTypes = Mage::helper('wordpress/app')->getPostTypes();
 
 			foreach($postTypes as $type => $postType) {
@@ -28,7 +29,7 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 			if (count($postTypes) > 0) {
 				Mage::app()->getRequest()->setParam('post_type', implode(',', array_keys($postTypes)));
 			}
-		}
+		}*/
 		
 		return parent::_prepareLayout();
 	}
@@ -42,12 +43,12 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 	{
 		if (!$this->hasTabData()) {
 			$tabs = array(
-					array(
+					'product' => array(
 					'alias' => 'product',
 					'html' => trim($this->getChildHtml('search_result_list')),
 					'title' => $this->__('Products'),
 				),
-				array(
+				'blog' => array(
 					'alias' => 'blog',
 					'html' => trim($this->getPostListHtml()),
 					'title' => $this->__('Posts'),
@@ -56,7 +57,7 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 			
 			$transportObject = new Varien_Object(array('tabs' => $tabs));
 			
-			Mage::dispatchEvent('wordpress_addon_integratedsearch_get_tabs', array('transport' => $transportObject, 'parsed_search_term' => $this->_getParsedSearchString()));
+			Mage::dispatchEvent('wordpress_addon_integratedsearch_get_tabs', array('transport' => $transportObject, 'parsed_search_term' => $this->_getParsedSearchString(), 'block' => $this));
 
 			$tabs = $transportObject->getTabs();
 
@@ -87,5 +88,10 @@ class Fishpig_Wordpress_Addon_IntegratedSearch_Block_Result extends Fishpig_Word
 		}
 		
 		return $this->_getData('tab_data');
+	}
+	
+	public function isGroupPostTypes()
+	{
+		return Mage::getStoreConfigFlag('wordpress/integratedsearch/group_post_types');
 	}
 }
